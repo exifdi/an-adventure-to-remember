@@ -197,6 +197,37 @@
             color: #555555;
         }
         
+        .clickable-question {
+            color: #00ffff;
+            cursor: pointer;
+            display: inline-block;
+            animation: pulse-glow 2s infinite;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        
+        .clickable-question:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 15px #ff00ff;
+            transform: scale(1.2);
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        .ending-button {
+            color: #888888;
+            cursor: pointer;
+            display: inline;
+            transition: all 0.3s ease;
+            text-decoration: underline;
+        }
+        
+        .ending-button:hover {
+            color: #aaaaaa;
+        }
+        
         @keyframes glitch {
             0% { transform: translate(0); }
             10% { transform: translate(-1px, -1px); }
@@ -472,7 +503,7 @@
                     { text: "", delay: 1600 },
                     { text: "╔════════════════════╗", delay: 200, class: 'glitch-text' },
                     { text: "║ XXXXX ERROR XXXXXX ║", delay: 200, class: 'glitch-text' },
-                    { text: "║  XXX CORRUPTED XXX ║", delay: 200, class: 'glitch-text' },
+                    { text: "║   XXX CORRUPTED XXX ║", delay: 200, class: 'glitch-text' },
                     { text: "╚════════════════════╝", delay: 200, class: 'glitch-text' },
                     { text: "", delay: 200 },
                     { text: "Type B to go BACK...", delay: 300, class: 'error-text' }
@@ -551,7 +582,8 @@
                     { text: "mind-expanding on-going never-ending", delay: 100 },
                     { text: "love I have for you.", delay: 100 },
                     { text: "", delay: 2000 },
-                    { text: "THE END (?)", delay: 1000, class: 'title-text' }
+                    { text: "THE END", delay: 1000, class: 'title-text' },
+                    { text: "(?)", delay: 100, class: 'clickable-question', id: 'question-mark' },
                 ],
                 inputPrompt: undefined
             }
@@ -561,13 +593,15 @@
             document.getElementById('terminalContent').innerHTML = '';
         }
         
-        function addLine(text, className = '') {
+        function addLine(text, className = '', id = '') {
             const terminalContent = document.getElementById('terminalContent');
             const line = document.createElement('div');
             line.className = `terminal-line ${className}`;
+            if (id) line.id = id;
             line.textContent = text;
             terminalContent.appendChild(line);
             document.getElementById('terminal').scrollTop = document.getElementById('terminal').scrollHeight;
+            return line;
         }
         
         function addImage(imageSrc, className = '') {
@@ -735,12 +769,13 @@
             startFireworkCycle();
         }
         
-        function typeText(text, className = '', speed = 50) {
+        function typeText(text, className = '', speed = 50, id = '') {
             return new Promise(resolve => {
                 const terminalContent = document.getElementById('terminalContent');
                 const terminal = document.getElementById('terminal');
                 const line = document.createElement('div');
                 line.className = `terminal-line ${className}`;
+                if (id) line.id = id;
                 terminalContent.appendChild(line);
                 
                 let i = 0;
@@ -751,7 +786,7 @@
                     
                     if (i >= text.length) {
                         clearInterval(typeInterval);
-                        resolve();
+                        resolve(line);
                     }
                 }, speed);
             });
@@ -811,7 +846,13 @@
                 } else if (line.text === '') {
                     addLine('');
                 } else {
-                    await typeText(line.text, line.class || '');
+                    const element = await typeText(line.text, line.class || '', 50, line.id || '');
+                    
+                    // Add click handler for question mark
+                    if (line.id === 'question-mark') {
+                        element.style.cursor = 'pointer';
+                        element.addEventListener('click', showAlternateEndings);
+                    }
                 }
             }
             
@@ -913,6 +954,73 @@
             }
         }
         
+        // Alternate ending content broken into lines
+        const alternateEndingLines = [
+            { text: "and I've met you and you're cute and you're funny and you're interesting", delay: 100 },
+            { text: "and you talk about things passionately and honestly", delay: 100 },
+            { text: "and you're moved by the little things and you cry", delay: 100 },
+            { text: "and I find this yperoxo and it makes me want to be part of it", delay: 100 },
+            { text: "and I want you to want me and make me a central part of your story", delay: 100 },
+            { text: "and I want to be vulnerable with you even if I regret it later", delay: 100 },
+            { text: "when you'll use it against me and try and fail and try again", delay: 100 },
+            { text: "and dream and suffer together", delay: 100 },
+            { text: "and maybe caress the darkness inside you because I recognise it", delay: 100 },
+            { text: "and feel strongly and deeply", delay: 100 },
+            { text: "and I want to learn everything about the things you love", delay: 100 },
+            { text: "and I want to teach you everything about the things I love", delay: 100 },
+            { text: "and I want to learn new things together", delay: 100 },
+            { text: "and I want to sit next to you while you do things that you love", delay: 100 },
+            { text: "and watch how your face lights up", delay: 100 },
+            { text: "and maybe stay in instead of going out", delay: 100 },
+            { text: "or go out if you absolutely want to", delay: 100 },
+            { text: "and grow along each other", delay: 100 },
+            { text: "and work on our respective things next to each other", delay: 100 },
+            { text: "and have our own inside jokes and references", delay: 100 },
+            { text: "and maybe miss each other sometimes", delay: 100 },
+            { text: "cause you sleep in the night and you sleep in the morning", delay: 100 },
+            { text: "and I want to merge into you", delay: 100 },
+            { text: "and find myself reflected in your eyes", delay: 100 },
+            { text: "and discover that loving you means loving myself more completely", delay: 100 },
+            { text: "and build something beautiful together", delay: 100 },
+            { text: "one ordinary extraordinary day at a time", delay: 100 }
+        ];
+        
+        function showAlternateEndings() {
+            const terminalContent = document.getElementById('terminalContent');
+            
+            // Add empty line
+            addLine('');
+            
+            // Add button as a simple terminal line
+            const line = document.createElement('div');
+            line.className = 'terminal-line';
+            
+            const button = document.createElement('span');
+            button.className = 'ending-button';
+            button.textContent = 'Something Original';
+            button.addEventListener('click', showEnding);
+            
+            line.appendChild(button);
+            terminalContent.appendChild(line);
+            
+            document.getElementById('terminal').scrollTop = document.getElementById('terminal').scrollHeight;
+        }
+        
+        async function showEnding() {
+            // Hide the button
+            const button = document.querySelector('.ending-button');
+            button.style.display = 'none';
+            
+            // Add empty line before the poem
+            addLine('');
+            
+            // Type out the alternate ending line by line
+            for (const line of alternateEndingLines) {
+                await new Promise(resolve => setTimeout(resolve, line.delay));
+                await typeText(line.text, '');
+            }
+        }
+
         // Start the game
         setTimeout(() => {
             playScene('password');
