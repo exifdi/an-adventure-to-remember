@@ -286,7 +286,7 @@
         }
         
         .waitress-image {
-            text-align: center;
+            text-align: left;
             margin: 5px 0;
         }
         
@@ -920,6 +920,10 @@
             
             const scene = gameScenes[sceneName];
             console.log('Playing scene:', sceneName, scene);
+            
+            // Clear screen between scenes for classic adventure game feel
+            clearTerminal();
+            
             isTyping = true;
             inputEnabled = false;
             
@@ -1052,9 +1056,9 @@
             { text: "and I want to allow myself to dream of a future with you,", delay: 100 },
             { text: "and I want you to want me and to make me a central part of your story", delay: 100 },
             { text: "and I want to be vulnerable with you even if I regret it later", delay: 100 },
-            { text: "when you'll use it against me and try and fail and try again", delay: 100 },
+            { text: "when you'll use it against me, and try and fail and try again", delay: 100 },
             { text: "and suffer together", delay: 100 },
-            { text: "and maybe caress the darkness inside you because I recognise it", delay: 100 },
+            { text: "and maybe embrace the darkness inside you 'cause I recognise it", delay: 100 },
             { text: "and feel strongly and deeply", delay: 100 },
             { text: "and worry about the day that you will no longer find me interesting", delay: 100 },
             { text: "and I want to learn everything about the things you love", delay: 100 },
@@ -1067,7 +1071,7 @@
             { text: "and grow along each other", delay: 100 },
             { text: "and work on our respective issues next to each other", delay: 100 },
             { text: "and have our own inside jokes and references", delay: 100 },
-            { text: "and maybe miss each other sometimes", delay: 100 },
+            { text: "and maybe miss each other some days", delay: 100 },
             { text: "'cause I sleep in the night and you sleep in the morning", delay: 100 },
             { text: "and I want to merge into you", delay: 100 },
             { text: "and find myself reflected in your eyes", delay: 100 },
