@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Archive</title>
+    <title>An adventure to remember</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
         
@@ -192,6 +192,29 @@
             }
         }
         
+        .neon-red {
+            animation: neonFlashRed 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes neonFlashRed {
+            0%, 100% {
+                color: #FF0000;
+                text-shadow: 
+                    0 0 5px #FF0000,
+                    0 0 10px #FF0000,
+                    0 0 15px #FF0000,
+                    0 0 20px #FF0000;
+            }
+            50% {
+                color: #FF6600;
+                text-shadow: 
+                    0 0 5px #FF6600,
+                    0 0 10px #FF6600,
+                    0 0 15px #FF6600,
+                    0 0 20px #FF6600;
+            }
+        }
+        
         .glitch-text {
             animation: glitch 0.5s infinite;
             color: #555555;
@@ -226,6 +249,22 @@
         
         .ending-button:hover {
             color: #aaaaaa;
+        }
+        
+        .attribution {
+            color: #555555;
+            font-size: 10px;
+            font-weight: 300;
+            opacity: 0.6;
+            position: absolute;
+            left: 0;
+            top: -15px;
+        }
+        
+        .poem-line-with-attribution {
+            position: relative;
+            display: inline-block;
+            width: 100%;
         }
         
         @keyframes glitch {
@@ -373,14 +412,21 @@
                     { text: "> EXCELLENT DECISION DETECTED", delay: 200, class: 'loading-text' },
                     { text: "", delay: 600 },
                     { text: "GREAT CHOICE!", delay: 800, class: 'title-text' },
-                    { text: "YOU MEET HER AND SHE'S BEAUTIFUL, INTERESTING AND YOU'RE VIBING. ALREADY A COUPLE DRINKS IN, AND YOU START THINKING OF THINGS...", delay: 100 },
-                    { text: "", delay: 120 },
-                    { text: "BUT UH-OH... THE BAR IS CLOSING", delay: 100 },
-                    { text: "", delay: 1600 },
-                    { text: "WHAT SHOULD YOU DO NEXT?", delay: 100 },
-                    { text: "", delay: 1000 },
-                    { text: "A) MOVE TO THE BAR NEXT DOOR FOR ONE LAST BEER", delay: 220 },
-                    { text: "B) CALL IT A NIGHT AND HEAD HOME, YOU DO WORK AFTER ALL TOMORROW", delay: 240 },
+                    { text: "", delay: 400 },
+                    { text: "YOU MEET AT THE DESIGNATED SPOT", delay: 200 },
+                    { text: "AT FIRST, YOU FIND THAT SHE LOOKS... DIFFERENT", delay: 200 },
+                    { text: "", delay: 400 },
+                    { text: "BUT AS YOU HEAD TO THE BAR AND START DRINKING", delay: 200 },
+                    { text: "THE CONVERSATION BEGINS TO FLOW EFFORTLESSLY", delay: 200 },
+                    { text: "YOU DISCOVER SHE'S NOT ONLY BEAUTIFUL BUT ALSO INTERESTING", delay: 200 },
+                    { text: "", delay: 600 },
+                    { text: "BUT UH-OH... THE BAR IS CLOSING", delay: 200 },
+                    { text: "SHE DOESN'T SEEM TO WANT THE NIGHT TO END", delay: 200 },
+                    { text: "", delay: 800 },
+                    { text: "WHAT ABOUT YOU?", delay: 200, class: 'title-text' },
+                    { text: "", delay: 600 },
+                    { text: "A) SUGGEST MOVING TO THE BAR NEXT DOOR - THE NIGHT IS YOUNG", delay: 220 },
+                    { text: "B) CALL IT A NIGHT AND HEAD HOME - YOU DO WORK TOMORROW AFTER ALL", delay: 240 },
                     { text: "", delay: 100 }
                 ],
                 inputPrompt: "CHOICE: ",
@@ -393,14 +439,20 @@
                     { text: "> PROCESSING ADVENTUROUS CHOICE...", delay: 200, class: 'loading-text' },
                     { text: "> LOADING NEXT SCENARIO...", delay: 200, class: 'loading-text' },
                     { text: "", delay: 600 },
-                    { text: "WELL, CONVERSATION IS HEATING UP", delay: 200 },
-                    { text: "BUT THERE'S NO ONE ELSE LEFT IN THE BAR", delay: 200 },
-                    { text: "", delay: 600 },
-                    { text: "SEEMS LIKE YOU'RE DELAYING CLOSE TIME FOR THE STAFF", delay: 200 },
-                    { text: "TIME FOR ANOTHER BAR CHANGE?", delay: 200 },
+                    { text: "MORE BEERS 🍻🍻", delay: 200, class: 'title-text' },
                     { text: "", delay: 400 },
-                    { text: "A) SURE, I KNOW OF A PLACE, I'M TAKING HER", delay: 100 },
-                    { text: "B) IS THE DRINKING GETTING OUT OF HAND? STILL TIME TO BACK OUT", delay: 100 },
+                    { text: "THE CONVERSATION KEEPS FLOWING", delay: 200 },
+                    { text: "BUT HONESTLY, YOU'RE NOT EVEN SURE WHAT ABOUT ANYMORE", delay: 200 },
+                    { text: "", delay: 400 },
+                    { text: "AT SOME POINT, YOU LOOK AROUND...", delay: 300 },
+                    { text: "YOU'RE THE LAST PEOPLE IN THE BAR", delay: 200 },
+                    { text: "YOU'RE DEFINITELY HOLDING UP CLOSING TIME FOR THE STAFF", delay: 200 },
+                    { text: "SHE NOTICES TOO", delay: 200 },
+                    { text: "", delay: 400 },
+                    { text: "TIME FOR ANOTHER BAR CHANGE?", delay: 200, class: 'title-text' },
+                    { text: "", delay: 400 },
+                    { text: "A) ABSOLUTELY, LET'S GO", delay: 100 },
+                    { text: "B) MAYBE THE DRINKING IS GETTING OUT OF HAND? TIME TO CALL IT", delay: 100 },
                     { text: "", delay: 100 }
                 ],
                 inputPrompt: "CHOICE: ",
@@ -414,21 +466,30 @@
                     { text: "> LOADING ETHICAL DILEMMA...", delay: 200, class: 'loading-text' },
                     { text: "", delay: 600 },
                     { text: "AT RESI", delay: 200, class: 'neon-blue' },
-                    { text: "MORE BEERS, AND THE TALK IS GETTING SPICY", delay: 200 },
-                    { text: "TALKING ABOUT CHEATING AND CHEATERS...", delay: 250 },
+                    { text: "", delay: 400 },
+                    { text: "AND THE 🍻🍻 KEEP COMING", delay: 200 },
+                    { text: "AND THIS TIME THE CONVERSATION IS GETTING SPICY", delay: 200 },
+                    { text: "SOMEHOW THE TOPIC SHIFTS TO RELATIONSHIPS", delay: 200 },
+                    { text: "CHEATING. CHEATERS.", delay: 250 },
                     { text: "", delay: 300 },
-                    { text: "WAIT, IS SHE HITTING ON YOU?", delay: 350 },
-                    { text: "BUT SHE HAS A GIRLFRIEND...", delay: 400 },
+                    { text: "SHE HAS A GIRLFRIEND", delay: 200 },
+                    { text: "'BUT SAYS SHE'S KIND OF A CHEATER'", delay: 350 },
+                    { text: "", delay: 400 },
+                    { text: "WAIT... IS SHE HITTING ON YOU?", delay: 400 },
+                    { text: "THE ALCOHOL HAS CLEARLY CLOUDED YOUR ABILITY TO THINK STRAIGHT", delay: 200 },
+                    { text: "BUT THE SIGNALS SEEM PRETTY CLEAR", delay: 200 },
                     { text: "", delay: 450 },
-                    { text: "SHE'S GOING TO THE BATHROOM", delay: 100 },
-                    { text: "LEAVING YOU TIME TO DECIDE WHAT TO DO NEXT", delay: 550 },
+                    { text: "SHE EXCUSES HERSELF TO THE BATHROOM", delay: 200 },
+                    { text: "LEAVING YOU ALONE WITH YOUR THOUGHTS", delay: 200 },
                     { text: "", delay: 600 },
-                    { text: "YOU'RE TEMPTED BUT THIS IS A HARD ETHICAL DECISION", delay: 650 },
-                    { text: "YOU CAN SEEK GUIDANCE FROM A WISE ADVISOR:", delay: 700 },
-                    { text: "A GIRL THAT WORKS THERE. ASK HER?", delay: 750 },
-                    { text: "", delay: 800 },
-                    { text: "A) YES", delay: 250 },
-                    { text: "B) NO", delay: 200 },
+                    { text: "YOU LIKE HER. YOU'RE TEMPTED TO MAKE A MOVE.", delay: 200 },
+                    { text: "BUT THIS IS A HARD ETHICAL DECISION", delay: 200 },
+                    { text: "", delay: 400 },
+                    { text: "YOU CAN SEEK GUIDANCE FROM A WISE ADVISOR:", delay: 200 },
+                    { text: "THE GIRL THAT WORKS HERE. ASK HER?", delay: 200 },
+                    { text: "", delay: 400 },
+                    { text: "A) YES - SEEK WISDOM", delay: 250 },
+                    { text: "B) NO - FIGURE THIS OUT YOURSELF", delay: 200 },
                     { text: "", delay: 100 }
                 ],
                 inputPrompt: "CHOICE: ",
@@ -478,16 +539,23 @@
                     { text: "> LOADING LOCATION: BERLIN...", delay: 200, class: 'loading-text' },
                     { text: "> ATMOSPHERIC TENSION: MAXIMUM", delay: 400, class: 'loading-text' },
                     { text: "", delay: 600 },
-                    { text: "THE CONVERSATION IS GETTING HEATED AGAIN", delay: 800 },
-                    { text: "YOU TELL HER YOU WANT TO KISS HER", delay: 1000 },
-                    { text: "", delay: 1200 },
-                    { text: "SHE'S FLUSTERED", delay: 1400 },
-                    { text: "SHE HAS BEEN WAITING FOR IT", delay: 1600 },
-                    { text: "SHE TELLS YOU SHE WANTS YOU TO KISS HER", delay: 1800 },
-                    { text: "", delay: 2000 },
-                    { text: "A) GO FOR IT - KISS HER", delay: 2000 },
-                    { text: "B) COME BACK TO YOUR SENSES, CRACK A JOKE AND LEAVE", delay: 2000 },
-                    { text: "", delay: 2600 }
+                    { text: "BERLIN", delay: 200, class: 'neon-red' },
+                    { text: "", delay: 600 },
+                    { text: "THE FOURTH BAR. THE ATMOSPHERE IS ELECTRIC.", delay: 400 },
+                    { text: "THE SPACE BETWEEN YOU SEEMS TO SHRINK", delay: 400 },
+                    { text: "", delay: 600 },
+                    { text: "YOU TELL HER YOU WANT TO KISS HER", delay: 800 },
+                    { text: "", delay: 1000 },
+                    { text: "SHE'S FLUSTERED", delay: 600 },
+                    { text: "SHE HAS BEEN WAITING FOR IT", delay: 600 },
+                    { text: "SHE TELLS YOU SHE WANTS YOU TO KISS HER", delay: 800 },
+                    { text: "", delay: 400 },
+                    { text: "THE MOMENT HANGS IN THE AIR", delay: 400 },
+                    { text: "EVERYTHING ELSE FADES AWAY", delay: 400 },
+                    { text: "", delay: 600 },
+                    { text: "A) CLOSE THE DISTANCE - KISS HER NOW", delay: 400 },
+                    { text: "B) REALITY CHECK - MAKE A JOKE AND STEP BACK", delay: 400 },
+                    { text: "", delay: 400 }
                 ],
                 inputPrompt: "CHOICE: ",
                 expectedInput: ["a", "b"],
@@ -503,7 +571,6 @@
                     { text: "", delay: 1600 },
                     { text: "╔════════════════════╗", delay: 200, class: 'glitch-text' },
                     { text: "║ XXXXX ERROR XXXXXX ║", delay: 200, class: 'glitch-text' },
-                    { text: "║   XXX CORRUPTED XXX ║", delay: 200, class: 'glitch-text' },
                     { text: "╚════════════════════╝", delay: 200, class: 'glitch-text' },
                     { text: "", delay: 200 },
                     { text: "Type B to go BACK...", delay: 300, class: 'error-text' }
@@ -549,7 +616,7 @@
                 lines: [
                     { text: "> LOADING EMOTIONAL CORE...", delay: 500, class: 'loading-text' },
                     { text: "", delay: 800 },
-                    { text: ".... and write poems for you and wonder why you don't believe me", delay: 100 },
+                    { text: ".... and write poems for you and wonder why you don't believe me", delay: 100, attribution: "Crave, Sarah Kane" },
                     { text: "and have a feeling so deep I can't find words for it", delay: 100, class: 'title-text' },
                     { text: "and want to buy you a kitten I'd get jealous of", delay: 100 },
                     { text: "because it would get more attention than me", delay: 100 },
@@ -769,18 +836,39 @@
             startFireworkCycle();
         }
         
-        function typeText(text, className = '', speed = 50, id = '') {
+        function typeText(text, className = '', speed = 50, id = '', attribution = '') {
             return new Promise(resolve => {
                 const terminalContent = document.getElementById('terminalContent');
                 const terminal = document.getElementById('terminal');
                 const line = document.createElement('div');
                 line.className = `terminal-line ${className}`;
                 if (id) line.id = id;
+                
+                if (attribution) {
+                    line.className += ' poem-line-with-attribution';
+                    const attributionSpan = document.createElement('span');
+                    attributionSpan.className = 'attribution';
+                    attributionSpan.textContent = attribution;
+                    line.appendChild(attributionSpan);
+                }
+                
                 terminalContent.appendChild(line);
                 
                 let i = 0;
                 const typeInterval = setInterval(() => {
-                    line.textContent = text.slice(0, i + 1);
+                    if (attribution) {
+                        // For lines with attribution, we need to update the text content while preserving the attribution span
+                        line.childNodes.forEach(node => {
+                            if (node.nodeType === Node.TEXT_NODE) {
+                                node.textContent = text.slice(0, i + 1);
+                            }
+                        });
+                        if (line.childNodes.length === 1) {
+                            line.insertBefore(document.createTextNode(text.slice(0, i + 1)), line.firstChild);
+                        }
+                    } else {
+                        line.textContent = text.slice(0, i + 1);
+                    }
                     terminal.scrollTop = terminal.scrollHeight;
                     i++;
                     
@@ -846,7 +934,7 @@
                 } else if (line.text === '') {
                     addLine('');
                 } else {
-                    const element = await typeText(line.text, line.class || '', 50, line.id || '');
+                    const element = await typeText(line.text, line.class || '', 50, line.id || '', line.attribution || '');
                     
                     // Add click handler for question mark
                     if (line.id === 'question-mark') {
@@ -956,36 +1044,48 @@
         
         // Alternate ending content broken into lines
         const alternateEndingLines = [
-            { text: "and I've met you and you're cute and you're funny and you're interesting", delay: 100 },
+            { text: "and we met you and you're cute and you're funny and you're interesting", delay: 100 },
+            { text: "and I'm infatuated and intrigued", delay: 100 },
             { text: "and you talk about things passionately and honestly", delay: 100 },
             { text: "and you're moved by the little things and you cry", delay: 100 },
             { text: "and I find this yperoxo and it makes me want to be part of it", delay: 100 },
-            { text: "and I want you to want me and make me a central part of your story", delay: 100 },
+            { text: "and I want to allow myself to dream of a future with you,", delay: 100 },
+            { text: "and I want you to want me and to make me a central part of your story", delay: 100 },
             { text: "and I want to be vulnerable with you even if I regret it later", delay: 100 },
             { text: "when you'll use it against me and try and fail and try again", delay: 100 },
-            { text: "and dream and suffer together", delay: 100 },
+            { text: "and suffer together", delay: 100 },
             { text: "and maybe caress the darkness inside you because I recognise it", delay: 100 },
             { text: "and feel strongly and deeply", delay: 100 },
+            { text: "and worry about the day that you will no longer find me interesting", delay: 100 },
             { text: "and I want to learn everything about the things you love", delay: 100 },
             { text: "and I want to teach you everything about the things I love", delay: 100 },
-            { text: "and I want to learn new things together", delay: 100 },
+            { text: "and I want us to learn new things together", delay: 100 },
             { text: "and I want to sit next to you while you do things that you love", delay: 100 },
             { text: "and watch how your face lights up", delay: 100 },
             { text: "and maybe stay in instead of going out", delay: 100 },
             { text: "or go out if you absolutely want to", delay: 100 },
             { text: "and grow along each other", delay: 100 },
-            { text: "and work on our respective things next to each other", delay: 100 },
+            { text: "and work on our respective issues next to each other", delay: 100 },
             { text: "and have our own inside jokes and references", delay: 100 },
             { text: "and maybe miss each other sometimes", delay: 100 },
-            { text: "cause you sleep in the night and you sleep in the morning", delay: 100 },
+            { text: "'cause I sleep in the night and you sleep in the morning", delay: 100 },
             { text: "and I want to merge into you", delay: 100 },
             { text: "and find myself reflected in your eyes", delay: 100 },
-            { text: "and discover that loving you means loving myself more completely", delay: 100 },
             { text: "and build something beautiful together", delay: 100 },
             { text: "one ordinary extraordinary day at a time", delay: 100 }
         ];
         
         function showAlternateEndings() {
+            // Disable the question mark
+            const questionMark = document.querySelector('.clickable-question');
+            if (questionMark) {
+                questionMark.style.cursor = 'default';
+                questionMark.style.color = '#666666';
+                questionMark.style.textShadow = 'none';
+                questionMark.style.animation = 'none';
+                questionMark.removeEventListener('click', showAlternateEndings);
+            }
+            
             const terminalContent = document.getElementById('terminalContent');
             
             // Add empty line
