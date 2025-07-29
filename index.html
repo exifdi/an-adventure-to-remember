@@ -253,7 +253,7 @@
         
         .attribution {
             color: #555555;
-            font-size: 10px;
+            font-size: 12px;
             font-weight: 300;
             opacity: 0.6;
             position: absolute;
@@ -368,7 +368,7 @@
             
             july17: {
                 lines: [
-                    { text: "> LOADING SCENARIO...", delay: 200, class: 'loading-text' },
+                    { text: "> LOADING DATE...", delay: 200, class: 'loading-text' },
                     { text: "", delay: 400 },
                     { text: "IT'S JULY 17TH 2025", delay: 600, class: 'title-text' },
                     { text: "YOU NEED TO WORK THE NEXT DAY, BUT YOU'VE MADE PLANS TO MEET WITH D FROM TWITTER", delay: 200 },
@@ -377,7 +377,7 @@
                     { text: "THE ETERNAL QUESTION PRESENTS ITSELF:", delay: 100 },
                     { text: "", delay: 100 },
                     { text: "A) GO MEET HER AS PLANNED", delay: 100 },
-                    { text: "B) CANCEL, STAY IN CAUSE LET'S FACE IT, YOU ARE ALL YOU NEED", delay: 100 },
+                    { text: "B) CANCEL, STAY IN CAUSE LET'S FACE IT, YOU'LL HAVE MORE FUN BY YOURSELF", delay: 100 },
                     { text: "", delay: 100 }
                 ],
                 inputPrompt: "CHOICE: ",
@@ -425,7 +425,7 @@
                     { text: "", delay: 800 },
                     { text: "WHAT ABOUT YOU?", delay: 200, class: 'title-text' },
                     { text: "", delay: 600 },
-                    { text: "A) SUGGEST MOVING TO THE BAR NEXT DOOR - THE NIGHT IS YOUNG", delay: 220 },
+                    { text: "A) SUGGEST MOVING TO THE BAR NEXT DOOR", delay: 220 },
                     { text: "B) CALL IT A NIGHT AND HEAD HOME - YOU DO WORK TOMORROW AFTER ALL", delay: 240 },
                     { text: "", delay: 100 }
                 ],
@@ -437,10 +437,8 @@
             secondBar: {
                 lines: [
                     { text: "> PROCESSING ADVENTUROUS CHOICE...", delay: 200, class: 'loading-text' },
-                    { text: "> LOADING NEXT SCENARIO...", delay: 200, class: 'loading-text' },
+                    { text: "> LOADING BEERS 🍻🍻 ...", delay: 200, class: 'loading-text' },
                     { text: "", delay: 600 },
-                    { text: "MORE BEERS 🍻🍻", delay: 200, class: 'title-text' },
-                    { text: "", delay: 400 },
                     { text: "THE CONVERSATION KEEPS FLOWING", delay: 200 },
                     { text: "BUT HONESTLY, YOU'RE NOT EVEN SURE WHAT ABOUT ANYMORE", delay: 200 },
                     { text: "", delay: 400 },
@@ -473,7 +471,7 @@
                     { text: "CHEATING. CHEATERS.", delay: 250 },
                     { text: "", delay: 300 },
                     { text: "SHE HAS A GIRLFRIEND", delay: 200 },
-                    { text: "'BUT SAYS SHE'S KIND OF A CHEATER'", delay: 350 },
+                    { text: "BUT SAYS SHE'S KIND OF A CHEATER...", delay: 350 },
                     { text: "", delay: 400 },
                     { text: "WAIT... IS SHE HITTING ON YOU?", delay: 400 },
                     { text: "THE ALCOHOL HAS CLEARLY CLOUDED YOUR ABILITY TO THINK STRAIGHT", delay: 200 },
@@ -482,7 +480,7 @@
                     { text: "SHE EXCUSES HERSELF TO THE BATHROOM", delay: 200 },
                     { text: "LEAVING YOU ALONE WITH YOUR THOUGHTS", delay: 200 },
                     { text: "", delay: 600 },
-                    { text: "YOU LIKE HER. YOU'RE TEMPTED TO MAKE A MOVE.", delay: 200 },
+                    { text: "YOU LIKE HER. YOU'RE TEMPTED TO MAKE A MOVE.", delay: 200, class: 'title-text'},
                     { text: "BUT THIS IS A HARD ETHICAL DECISION", delay: 200 },
                     { text: "", delay: 400 },
                     { text: "YOU CAN SEEK GUIDANCE FROM A WISE ADVISOR:", delay: 200 },
@@ -857,7 +855,7 @@
                 let i = 0;
                 const typeInterval = setInterval(() => {
                     if (attribution) {
-                        // For lines with attribution, we need to update the text content while preserving the attribution span
+                        // For lines with attribution, need to update the text content while preserving the attribution span
                         line.childNodes.forEach(node => {
                             if (node.nodeType === Node.TEXT_NODE) {
                                 node.textContent = text.slice(0, i + 1);
