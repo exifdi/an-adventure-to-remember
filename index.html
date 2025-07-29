@@ -394,7 +394,7 @@
                     { text: "YOU JUST MISSED THE TIME OF YOUR LIFE", delay: 100, class: 'error-text' },
                     { text: "", delay: 1200 },
                     { text: "┌─────────────────┐", delay: 100 },
-                    { text: "│   ಠ_ಠ LOSER   │", delay: 100 },
+                    { text: "│      ಠ_ಠ LOSER     │", delay: 100 },
                     { text: "└─────────────────┘", delay: 100 },
                     { text: "", delay: 1900 },
                     { text: "GAME OVER", delay: 2100, class: 'error-text' },
@@ -1060,7 +1060,7 @@
             { text: "and suffer together", delay: 100 },
             { text: "and maybe embrace the darkness inside you 'cause I recognise it", delay: 100 },
             { text: "and feel strongly and deeply", delay: 100 },
-            { text: "and worry about the day that you will no longer find me interesting", delay: 100 },
+            { text: "and dread the day that you will no longer find me interesting", delay: 100 },
             { text: "and I want to learn everything about the things you love", delay: 100 },
             { text: "and I want to teach you everything about the things I love", delay: 100 },
             { text: "and I want us to learn new things together", delay: 100 },
@@ -1111,11 +1111,10 @@
         }
         
         async function showEnding() {
-            // Hide the button
-            const button = document.querySelector('.ending-button');
-            button.style.display = 'none';
+            // Clear the terminal for clean presentation
+            clearTerminal();
             
-            // Add empty line before the poem
+            // Add some initial spacing
             addLine('');
             
             // Type out the alternate ending line by line
